@@ -16,7 +16,6 @@ Linked List Node Structure
 list	
 	count <integer>
 	head <pointer>
-end lst
 end list
 
 node 
@@ -86,9 +85,12 @@ The above two conditions have the same logic.
 
 Insert in the middle (between two nodes)
 ----------------------------------------
+In this case the predecessor will have an address.  The new node will also have a successor. We point the new node to its successor and point
+its predecessor to the new node. The address of the new node's successor can be found in the predecessor's link field.
 
-In this case the predecessor will have an address. 
-In this case the predecessor will have an address.  The new node will also have a successor.
+pNew -> link = pPre -> link
+pPre -> link = pNew
+
 
 
 
