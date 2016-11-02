@@ -1,0 +1,93 @@
+Linked list data structure
+
+Salient features:
+1) There is no physical relationship between the nodes in a linbked list. Nodes are the elements of a linked list and they are not stored continguosly.
+2) A node in a linked list has at least two fields: One contains the data, the other the address of the next node in the sequence.
+3) The nodes in a linked list are called self-referential structures.
+4) In a self-referential structure, each instance of the structure contains a pointer to another instance of the same structure type.
+5) Since there is no physical relationship, we need pointers to distinguish the beginning of the list
+   and also to find the logical successor of any given node.
+6) The pointer to the beginning of the list is known as the head pointer because it points to the head of the list.
+   We call the head pointer as pHead in the listings below and the pointers that identify a node's immediate successor as link.
+7) In addition to the head pointer, it is also efficient if we can have a pointer to the last element in the list. This pointer is called pRear.
+Linked List Node Structure
+------------------------------
+
+list	
+	count <integer>
+	head <pointer>
+end list
+
+node 
+	data <dataType>
+    link <pointer>
+end node
+
+	
+When a node contains data about a list, the data is called metadata that is data about the data in the list. Example: count is a metadata that 
+tells the user about the number of nodes in the list.
+
+A typical dataType is given below:
+
+dataType
+	key <keyType>
+	field1 <fieldType>
+	field2 <fieldType>
+	...
+	fieldN <fieldType>
+end dataType
+
+
+Linked List algorthms - Pseudocode
+
+1) Create List
+   
+   This algorithm receives the head structure and initialises the metadata for the list.
+   algorithm createList (ref list <metadata>)
+   Initialises metadata for the linked list
+		Pre   list is metadata structure passed by reference
+        Post  metadata initialised
+    1  	list.head = null
+    2   list.count = 0
+    3 return
+   end createList
+
+2) Insert Node
+
+This adds data to a linked list. We only need its logical predecessor to insert a node into the list. Given the predecessor, there are three steps
+to the insertion.
+	a. Allocate memory for the new node and insert data
+	b. Point the node to its successor
+	c. Point the predecessor of the new node to the new node.
+	
+When we are trying to insert a node into a list the list could either be empty or have at least one node. 
+We also need to know the location of the node that precedes this node. The predecessor node is identified by a pointer that can be either null or pointing to a 
+node. If the pointer is null, it means that the new node that we are about to add is at the beginning of the list or an empty list.
+If the predecessor is not null , then we are adding the node after the first node - that is either in the middle of the list or at the end of the list.
+	
+Insert into empty list
+---------------------
+When the head pointer of a list is null, the list is empty. TO add the new node to the empty list, we assign the address of the new node to the list head pointer.
+The link field of the new node is then set to null.
+
+pNew -> link = list.head	//set the link to null pointer
+list.head = pNew            //point list to first node
+
+Insert at the beginning of the list
+----------------------------------
+This case demands us to add a node before the first node of the list. The first node of the list has its address stored in the head pointer.
+To add a node at the beginning, we point the new node to the first node in the list. Then we set the head pointer to point to the new first node.
+
+pNew -> link = list.head
+list.head = pNew
+
+The above two conditions have the same logic. 
+
+Insert in the middle (between two nodes)
+----------------------------------------
+
+
+
+
+
+   
