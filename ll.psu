@@ -17,6 +17,7 @@ list
 	count <integer>
 	head <pointer>
 end lst
+end list
 
 node 
 	data <dataType>
@@ -86,6 +87,7 @@ The above two conditions have the same logic.
 Insert in the middle (between two nodes)
 ----------------------------------------
 
+In this case the predecessor will have an address. 
 
 
 
