@@ -92,7 +92,46 @@ pNew -> link = pPre -> link
 pPre -> link = pNew
 
 
+Insert at the end
+---------------------
+This means that the last node in the linked list will have a null pointer. The predecessor node which is currently pointing to null will 
+now point to the new node after insertion.
 
+pNew -> link = pPre -> link //predecessor is pointing to null. We change it such that the new node points to null
+pPre -> link = pNew
+
+The above snippet is same as the pseudocode for inserting a new node between two existing nodes.
+
+The pseudocode is listed below:
+
+algorithm insertNode(ref list<metadata>, 
+					 val pPre <node pointer>,
+					 val dataIn <dataType>)
+
+Inserts data into a new node in the linked list
+	Pre   list is metadata structure to a valid list
+          pPre is pointer to data's logical predecessor
+          dataIn contains to be inserted
+    Post  data has been inserted into the linked list
+    Return true if successful, false if the memory overflows	
+	1 allocate (pNew)
+	2 if(memory overflow)
+	  1 return false
+	3 end if
+    4 pNew -> data = dataIn
+    5 if (pPre is null)
+      Adding before first node or to an empty list
+      1 pNew -> link = list.head
+      2 list.head = pNew
+ 	6 else 
+	  Adding in the middle or at the end
+      1 pNew -> link = pPre -> link
+      2 pPre -> link = pNew
+    7 end if
+	8 list.count = list.count + 1
+    9 return true
+end insertNode
+  	
 
 
    
