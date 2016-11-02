@@ -104,9 +104,7 @@ The above snippet is same as the pseudocode for inserting a new node between two
 
 The pseudocode is listed below:
 
-algorithm insertNode(ref list<metadata>, 
-					 val pPre <node pointer>,
-					 val dataIn <dataType>)
+algorithm insertNode(ref list<metadata>, val pPre <node pointer>,val dataIn <dataType>)
 
 Inserts data into a new node in the linked list
 	Pre   list is metadata structure to a valid list
