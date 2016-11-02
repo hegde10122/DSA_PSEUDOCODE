@@ -88,6 +88,7 @@ Insert in the middle (between two nodes)
 ----------------------------------------
 
 In this case the predecessor will have an address. 
+In this case the predecessor will have an address.  The new node will also have a successor.
 
 
 
