@@ -220,9 +220,74 @@ Searches list and passes back address of node containing target and its logical 
     8  return found
 end orderedSearchList
 
-	
-            	
+5)  Retrieve Node
+------------------
+Retrieve node uses the orderedSearchList algorithm to locate data in the list. If the data is found, it moves data to the output area 
+in the calling module and returns true. If not found then the it returns false.
 
+algorithm retrieveNode (val list <metadata>, val key <key type>, ref dataOut <dataType>)
+Retrieves data from a linked list
+	Pre  list is metadata structure to a valid list
+	     key is target of data to be retrieved
+		 dataOut is variable to receive retrieved data
+    Post data placed in dataOut or error if data not found
+	Return true if successful or false if data is not found
+	1  found = orderedSearchList(list, pPre, pLoc, key)
+	2  if (found)
+	   1 dataOut = pLoc -> data
+	3  end if
+    4  return found
+end retrieveNode
+
+6) Empty List
+--------------
+An empty list is a module that reutns a boolean indicating the presence of data in the list or that it is empty.
+
+algorithm emptyList(val list <metadata>)
+Returns boolean indicating whether the list is empty
+	Pre  list is metadata structure to a valid list
+    Return true if list is empty, false if list contains data
+    1  return (list.count equal to zero)
+end emptyList
+
+7) Full list
+--------------
+We can test for a full list by trying to allocate memory for a new node. If we are successful, we simply recycle the memory and return 
+false - the list is not full. If we are unsuccessful then the dynamic memory is full  and we return true.
+
+algorithm fullList(val list <metadata>)
+Returns boolean indicating whether or not the list is full
+	Pre list is metadata structure to a valid list
+	Return  false if room for new node: true if memory full
+	1 allocate (pNew)
+	2 if (allocation successful)
+      1 recycle (pNew)
+      2 return false
+    3 end if
+    4 return true
+end fullList
+
+8) List count
+--------------
+algorithm listCount(val list <metadata)
+Returns the integer representing number of nodes in the list
+	Pre list is metadata structure to a valid list
+	Return count for number of nodes in list
+   1 return (list.count)
+end listCount
+
+9) Traverse List
+--------------------
+
+Traversal logic is used by algorithms that start from the first node till the list is completed for a variety of tasks like printing the list, summing a 
+list, changing the value of a node etc.
+We use a walking pointer that moves from node to node as each element is processed. Assuming a linked list with a head structure, we set a walking 
+pointer to the first node in the list. By using a loop we continue until all the data has been processed.       
+	
+
+	
+	
+	
 
 	
 
