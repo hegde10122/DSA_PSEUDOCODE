@@ -130,6 +130,74 @@ Inserts data into a new node in the linked list
     9 return true
 end insertNode
   	
+3) Delete a Node
+-------------------
+A node in a linked list is removed by changing various link pointers and then physically deleteing the node from dynamic memory.
+Firstly, we must locate the node by knowing its address and its predecessor's address. Once we locate the node to be deleted, we then change the 
+predecessor's link field to point to the deleted node's successor. The deleted node is recycled back to the memory.
+If the list has only one node then deleteion of that node results in an empty list. In such a case, the head must point to null.
+
+Delete first node
+-------------------
+
+When we delete the first node then we must reset the head pointer to point to the firs node's successor and then recycle the memory for the deleted node.
+If the predecessor is a null pointer then it means that we are deleting the first node. The following pseudocode explains this logic.
+
+list.head = pLoc -> link //pLoc is the pointer that identifies the node to be deleted
+recycle(pLoc) // recycle is the pseudo command that returns a node's space to dynamic memory
+
+General delete case
+--------------------
+
+Deleting any node in the middle of a linked list or at the end, involves the same process - The predecessor node points to the successor of the 
+node being deleted. If the node is the last node, then we move the predecessor's link field point to null making the predecessor the new logical end
+of the list. The pseudocode for this case is summed in the two lines below.
+
+pPre -> link = pLoc -> link
+recycle(pLoc)
+
+algorithm deleteNode(ref list <metadata>,
+                    val pPre <node pointer>,
+					val pLoc <node pointer>,
+					ref dataOut <dataType>)
+Deletes data from a linked list and returns it to calling module.
+	Pre list is metadata structure to a valid list  
+	    pPre is a pointer to predecessor node
+        pLoc is a pointer to a node being deleted
+        data is a variable to receive data to be deleted
+    Post data has been deleted and returned to the calling method
+
+    1  dataOut = pLoc -> data
+    2  if(pPre is null)
+       deleting first node
+       1 list.head = pLoc -> link
+    3  else
+       Deleting other nodes
+       1 pPre -> link = pLoc -> link 
+    4  end if
+	5  list.count = list.count - 1
+    6 recycle(pLoc)
+    7 return
+end deleteNode
+
+4) Ordered list search
+-----------------------------------
+
+In a linked list, we have search sequentially for a nod because there is no physical relationship amongst nodes. We search the list based on key values.
+In a simple linked lists both the data and the key can be the same value. In a complex structure, where data consists of multiple field values, we need about
+separate key field. In an ordered list that we are considering here the values in the linked list are in non-descending order.
+Given a target key, the ordered list search attempts to locate the requested node in the linked list. If a node in the list matches the target the search
+returns true; if there are no key matches then the search returns false.
+
+
+	
+
+ 
+
+
+
+
+
 
 
    
