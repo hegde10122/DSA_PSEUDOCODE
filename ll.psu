@@ -187,7 +187,41 @@ In a linked list, we have search sequentially for a nod because there is no phys
 In a simple linked lists both the data and the key can be the same value. In a complex structure, where data consists of multiple field values, we need about
 separate key field. In an ordered list that we are considering here the values in the linked list are in non-descending order.
 Given a target key, the ordered list search attempts to locate the requested node in the linked list. If a node in the list matches the target the search
-returns true; if there are no key matches then the search returns false.
+returns true; if there are no key matches then the search returns false. We start from the beginning and search sequentially until the target value is no longer
+greater than the current value of node's key. At this point, the target value is either less than or equal to the current node's key while the
+predecessor is pointing to the node immediately before the current node. We then test the current node and set the return value true if the target value is
+equal to the list value or false if it is less and terminate the seearch.
+
+algorithm orderedSearchList(val list <metadata>, ref pPre <node pointer>, ref pLoc <node pointer>, val target <key type>)
+Searches list and passes back address of node containing target and its logical predecessor
+	Pre 	list is metadata structure to a valid list
+	        pPre is pointer variable for predecessor
+			pLoc is pointer variable for current node
+			target is the key being sought
+	Post    pLoc points to first node with equal/greater key or null if target > key of last node
+	        pPre points to largest node smaller than key or null if target < key of first node
+	Return  true if found, false if not found
+    1  pPre = null
+    2  pLoc = list.head
+    3  loop(pLoc not null AND target > pLoc -> data.key)
+       1  pPre = pLoc
+       2  pLoc = pLoc -> link
+    4  end loop
+       Set return value
+    5  if(pLoc is null)
+       1 found = false
+    6  else	   
+	   1 if(target equal pLoc -> data.key)
+         1 found = true
+       2 else
+         1 found = false
+       3 end if
+    7  end if
+    8  return found
+end orderedSearchList
+
+	
+            	
 
 
 	
