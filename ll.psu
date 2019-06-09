@@ -282,7 +282,8 @@ end listCount
 Traversal logic is used by algorithms that start from the first node till the list is completed for a variety of tasks like printing the list, summing a 
 list, changing the value of a node etc.
 We use a walking pointer that moves from node to node as each element is processed. Assuming a linked list with a head structure, we set a walking 
-pointer to the first node in the list. By using a loop we continue until all the data has been processed.       
+pointer to the first node in the list. By using a loop we continue until all the data has been processed. 
+      
 	
 
 	
